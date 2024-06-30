@@ -2,7 +2,7 @@
     import axios from 'axios';
     import { ref, onMounted } from 'vue';
     import { useRoute } from 'vue-router';
-    import Header from './Header.vue';
+    import Header from '../components/Header.vue';
 
     const loading = ref(true);
     const pokemon = ref(null);

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import PokemonList from '../components/PokemonList.vue';
-import PokemonDetail from '../components/PokemonDetail.vue';
+import PokemonList from '../pages/PokemonList.vue';
+import PokemonDetail from '../pages/PokemonDetail.vue';
 
 const routes = [
     { path: '/', name: 'pokemon-list', component: PokemonList },
