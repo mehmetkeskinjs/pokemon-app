@@ -3,6 +3,7 @@
     import { ref, onMounted, watch } from 'vue';
     import PokemonCard from './PokemonCard.vue';
     import SkeletonLoader from './SkeletonLoader.vue';
+    import Header from './Header.vue';
 
     const pokemonList = ref([]);
     const page = ref(1);
@@ -27,20 +28,14 @@
         }
     };
 
-    const prevPage = () => {
-        if (page.value > 1) {
-            page.value--;
-        }
-    };
-
     watch(page, fetchPokemons);
 
     onMounted(fetchPokemons);
 </script>
 
 <template>
-    <h1>Pokemon List</h1>
-    <div v-if="!loading" class="flex items-center justify-center flex-wrap">
+    <Header />
+    <div v-if="!loading" class="flex items-center justify-center flex-wrap gap-4 mt-4">
         <PokemonCard
             v-for="pokemon in pokemonList"
             :key="pokemon.name"
@@ -48,10 +43,10 @@
             :imageUrl="getPokemonImage(pokemon.url)"
         />
     </div>
-    <div v-else>
+    <div v-else class="flex items-center justify-center flex-wrap gap-4 mt-4">
         <SkeletonLoader v-for="n in 20" :key="n" />
     </div>
-    <div class="pagination">
+    <div class="w-full h-28 flex items-center justify-center gap-5">
         <button @click="page > 1 && page--" :disabled="page === 1">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
